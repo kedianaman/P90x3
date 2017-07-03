@@ -64,6 +64,10 @@ class WorkoutManager {
     func workoutAtIndex(index: Int) -> Workout {
         return workouts[index]
     }
+    
+    func numberOfWorkouts() -> Int {
+        return workouts.count
+    }
 }
 
 

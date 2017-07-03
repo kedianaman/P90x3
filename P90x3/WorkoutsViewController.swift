@@ -12,27 +12,51 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var excercisesTableView: UITableView!
     
     let workoutManger = WorkoutManager()
-    var workoutIndex = 0
+    var currentWorkout: Workout!
+    
+    var currentWorkoutIndex = 0 {
+        didSet {
+            currentWorkout = workoutManger.workoutAtIndex(index: currentWorkoutIndex)
+            excercisesTableView.reloadData()
+            workoutTitleLabel.text = currentWorkout.name
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        currentWorkout = workoutManger.workoutAtIndex(index: currentWorkoutIndex)
+        workoutTitleLabel.text = currentWorkout.name
     }
     
+    // MARK: IB Actions
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        if currentWorkoutIndex < workoutManger.numberOfWorkouts() - 1 {
+            currentWorkoutIndex = currentWorkoutIndex + 1
+        }
+    }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        if currentWorkoutIndex > 0 {
+            currentWorkoutIndex = currentWorkoutIndex - 1
+        }
+    }
+    
+    // MARK: TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let workout = workoutManger.workoutAtIndex(index: 0)
-        return workout.excercises.count
+        return currentWorkout.excercises.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "ExcerciseCellIdentifier")
-        cell.textLabel?.text = workoutManger.workoutAtIndex(index: workoutIndex).excercises[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCellIdentifier", for: indexPath)
+        cell.textLabel?.text = currentWorkout.excercises[indexPath.row]
         return cell
     }
     
-
+    
     
 
 }
