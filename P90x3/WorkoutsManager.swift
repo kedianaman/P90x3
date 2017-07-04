@@ -68,6 +68,10 @@ class WorkoutManager {
     func numberOfWorkouts() -> Int {
         return workouts.count
     }
+    
+    func excercisesForWorkoutName(title: String) -> [String] {
+        return excercisesForWorkout[title]!
+    }
 }
 
 
