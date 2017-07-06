@@ -12,7 +12,8 @@
 		ED2DE1B61F0957C4008DF7C7 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B51F0957C4008DF7C7 /* WorkoutsViewController.swift */; };
 		ED6DB0EF1F0B8FDC002CED80 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */; };
 		ED6DB0F01F0B8FE0002CED80 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
-		ED6DB0F21F0B962A002CED80 /* ExcerciseWkInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DB0F11F0B962A002CED80 /* ExcerciseWkInterfaceController.swift */; };
+		ED6DB0F21F0B962A002CED80 /* tenTimesExcerciseInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DB0F11F0B962A002CED80 /* tenTimesExcerciseInterfaceController.swift */; };
+		ED946B8D1F0BFCAB00DC80AF /* thirtySecExcerciseInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED946B8C1F0BFCAB00DC80AF /* thirtySecExcerciseInterfaceController.swift */; };
 		EDAE37A71F07A9CF001597A1 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAE37A61F07A9CF001597A1 /* RingView.swift */; };
 		EDC2461F1F079D20008C5AE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2461E1F079D20008C5AE2 /* AppDelegate.swift */; };
 		EDC246211F079D20008C5AE2 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC246201F079D20008C5AE2 /* MainMenuViewController.swift */; };
@@ -91,7 +92,8 @@
 		ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsManager.swift; sourceTree = "<group>"; };
 		ED2DE1B51F0957C4008DF7C7 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
-		ED6DB0F11F0B962A002CED80 /* ExcerciseWkInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseWkInterfaceController.swift; sourceTree = "<group>"; };
+		ED6DB0F11F0B962A002CED80 /* tenTimesExcerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tenTimesExcerciseInterfaceController.swift; sourceTree = "<group>"; };
+		ED946B8C1F0BFCAB00DC80AF /* thirtySecExcerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirtySecExcerciseInterfaceController.swift; sourceTree = "<group>"; };
 		EDAE37A61F07A9CF001597A1 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		EDC2461B1F079D20008C5AE2 /* P90x3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P90x3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC2461E1F079D20008C5AE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,7 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				EDC246571F079D20008C5AE2 /* MainMenuInterfaceController.swift */,
-				ED6DB0F11F0B962A002CED80 /* ExcerciseWkInterfaceController.swift */,
+				ED6DB0F11F0B962A002CED80 /* tenTimesExcerciseInterfaceController.swift */,
+				ED946B8C1F0BFCAB00DC80AF /* thirtySecExcerciseInterfaceController.swift */,
 				EDC246591F079D20008C5AE2 /* ExtensionDelegate.swift */,
 				EDC2465B1F079D20008C5AE2 /* ComplicationController.swift */,
 				EDC2465D1F079D20008C5AE2 /* Assets.xcassets */,
@@ -457,7 +460,8 @@
 				EDC2465C1F079D20008C5AE2 /* ComplicationController.swift in Sources */,
 				ED6DB0F01F0B8FE0002CED80 /* WorkoutsManager.swift in Sources */,
 				ED6DB0EF1F0B8FDC002CED80 /* Workout.swift in Sources */,
-				ED6DB0F21F0B962A002CED80 /* ExcerciseWkInterfaceController.swift in Sources */,
+				ED946B8D1F0BFCAB00DC80AF /* thirtySecExcerciseInterfaceController.swift in Sources */,
+				ED6DB0F21F0B962A002CED80 /* tenTimesExcerciseInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

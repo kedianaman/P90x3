@@ -17,16 +17,18 @@ class Workout {
     }
 }
 
-// Implement later
-//class Excercise {
-//    let name: String
-//    let type: String
-//    
-//    init(name: String, type: String) {
-//        self.name = name
-//        self.type = type
-//    }
-//    
-//}
+class Excercise {
+    let name: String
+    let excerciseType: type
+    init(name: String, excerciseType: type) {
+        self.name = name
+        self.excerciseType = excerciseType
+    }
+    
+    enum type {
+        case thirtySeconds, tenTimes, tenTimesEccentrically
+    }
+    
+}
 
 

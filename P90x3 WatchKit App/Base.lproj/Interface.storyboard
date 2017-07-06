@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="34" y="30"/>
         </scene>
-        <!--ExcerciseWorkoutIdentifier-->
+        <!--TenTimesExerciseWorkoutIdentifier-->
         <scene sceneID="708-yU-uh8">
             <objects>
-                <controller identifier="ExcerciseWorkoutIdentifier" id="62o-b3-ZDD" customClass="ExcerciseWkInterfaceController" customModule="P90x3_WatchKit_Extension">
+                <controller identifier="TenTimesExerciseWorkoutIdentifier" id="62o-b3-ZDD" customClass="tenTimesExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Name" textAlignment="left" numberOfLines="0" id="zfD-aS-I9c">
                             <fontDescription key="font" type="system" pointSize="30"/>
@@ -51,6 +51,33 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="278" y="24"/>
+        </scene>
+        <!--ThirtySecExerciseWorkoutIdentifier-->
+        <scene sceneID="3h3-fs-Gdj">
+            <objects>
+                <controller identifier="ThirtySecExerciseWorkoutIdentifier" id="SIj-ph-2q9" customClass="thirtySecExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Name" textAlignment="left" numberOfLines="0" id="con-6Y-Q6o">
+                            <fontDescription key="font" type="system" pointSize="24"/>
+                        </label>
+                        <timer alignment="center" verticalAlignment="center" textAlignment="center" previewedSeconds="30" id="59a-5y-WC9">
+                            <fontDescription key="font" type="system" pointSize="30"/>
+                            <calendarUnit key="units" minute="YES" second="YES"/>
+                        </timer>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start" id="eqk-K5-dcH">
+                            <connections>
+                                <action selector="startButtonPressed" destination="SIj-ph-2q9" id="b3k-ww-i3V"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="startStopButton" destination="eqk-K5-dcH" id="b9Y-j3-pPf"/>
+                        <outlet property="workoutTimer" destination="59a-5y-WC9" id="YWD-WC-WSG"/>
+                        <outlet property="workoutTitleLabel" destination="con-6Y-Q6o" id="Cg2-kV-fHH"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="510" y="21"/>
         </scene>
     </scenes>
 </document>

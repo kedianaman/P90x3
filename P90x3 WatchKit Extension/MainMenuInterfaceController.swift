@@ -10,7 +10,8 @@ import Foundation
 
 
 struct ControllerIdentifier {
-    static let ExcerciseWorkoutIdentifier = "ExcerciseWorkoutIdentifier"
+    static let tenTimesExerciseWorkoutIdentifier = "TenTimesExerciseWorkoutIdentifier"
+    static let thirtySecExerciseWorkoutIdentifier = "ThirtySecExerciseWorkoutIdentifier"
 }
 
 class MainMenuInterfaceController: WKInterfaceController {
@@ -39,7 +40,7 @@ class MainMenuInterfaceController: WKInterfaceController {
     @IBAction func startButtonPressed() {
         var identifiers = [String]()
         for _ in 0..<currentlySelectedWorkout.excercises.count {
-            identifiers.append(ControllerIdentifier.ExcerciseWorkoutIdentifier)
+    identifiers.append(ControllerIdentifier.thirtySecExerciseWorkoutIdentifier)
         }
         presentController(withNames: identifiers, contexts: currentlySelectedWorkout.excercises)
     }
