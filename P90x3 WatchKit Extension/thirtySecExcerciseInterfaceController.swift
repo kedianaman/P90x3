@@ -14,7 +14,7 @@ class thirtySecExcerciseInterfaceController: WKInterfaceController {
     @IBOutlet var workoutTitleLabel: WKInterfaceLabel!
     @IBOutlet var workoutTimer: WKInterfaceTimer!
     @IBOutlet var startStopButton: WKInterfaceButton!
-        
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         let exercise = context as! String

@@ -40,7 +40,7 @@ class MainMenuInterfaceController: WKInterfaceController {
     @IBAction func startButtonPressed() {
         var identifiers = [String]()
         for _ in 0..<currentlySelectedWorkout.excercises.count {
-    identifiers.append(ControllerIdentifier.thirtySecExerciseWorkoutIdentifier)
+    identifiers.append(ControllerIdentifier.tenTimesExerciseWorkoutIdentifier)
         }
         presentController(withNames: identifiers, contexts: currentlySelectedWorkout.excercises)
     }
