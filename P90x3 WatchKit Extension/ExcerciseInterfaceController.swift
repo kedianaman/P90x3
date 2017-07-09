@@ -9,7 +9,7 @@ import WatchKit
 import Foundation
 
 
-class tenTimesExcerciseInterfaceController: WKInterfaceController {
+class ExcerciseInterfaceController: WKInterfaceController {
 
     @IBOutlet var workoutTitleLabel: WKInterfaceLabel!
     @IBOutlet var workoutTypeLabel: WKInterfaceLabel!

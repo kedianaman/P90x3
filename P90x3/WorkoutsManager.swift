@@ -67,8 +67,12 @@ class WorkoutManager {
     
     func numberOfWorkouts() -> Int {
         return workouts.count
+        
     }
     
+    func allWorkouts() -> [Workout] {
+        return self.workouts
+    }
 }
 
 

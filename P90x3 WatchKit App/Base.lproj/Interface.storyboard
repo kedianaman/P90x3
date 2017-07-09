@@ -16,7 +16,7 @@
                     <items>
                         <picker height="109" alignment="left" id="IZ1-Fm-pFG">
                             <connections>
-                                <action selector="pickerSelected:" destination="AgC-eL-Hgc" id="3nm-gh-a6Q"/>
+                                <action selector="pickerItemChanged" destination="AgC-eL-Hgc" id="3nm-gh-a6Q"/>
                             </connections>
                         </picker>
                         <button width="1" alignment="left" title="Start" id="rUI-Aq-W3S">
@@ -30,12 +30,42 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="34" y="30"/>
+            <point key="canvasLocation" x="-203" y="30"/>
+        </scene>
+        <!--WorkoutInterfaceController-->
+        <scene sceneID="Xs8-yi-cjr">
+            <objects>
+                <controller identifier="WorkoutInterfaceController" id="mgO-Fd-CBq" customClass="WorkoutInterfaceController" customModule="P90x3_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="0:32:41" textAlignment="left" id="dIS-Om-mKh">
+                            <accessibilityTraits key="accessibilityTraits" image="YES" staticText="YES"/>
+                            <fontDescription key="font" type="system" pointSize="24"/>
+                        </label>
+                        <label alignment="left" text="242 CAL" textAlignment="left" id="L81-oM-Snr">
+                            <fontDescription key="font" type="system" pointSize="24"/>
+                        </label>
+                        <label alignment="left" text="101 BPM" textAlignment="left" id="gSc-Vg-eeA">
+                            <fontDescription key="font" type="system" pointSize="24"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="End Workout" id="HQP-lI-joC">
+                            <connections>
+                                <action selector="workoutEnded" destination="mgO-Fd-CBq" id="WDQ-50-Tje"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="caloriesLabel" destination="L81-oM-Snr" id="5Eh-UH-KOn"/>
+                        <outlet property="durationLabel" destination="dIS-Om-mKh" id="BzG-Tk-4c7"/>
+                        <outlet property="heartRateLabel" destination="gSc-Vg-eeA" id="r8M-it-jNT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="25" y="29"/>
         </scene>
         <!--TenTimesExerciseWorkoutIdentifier-->
         <scene sceneID="708-yU-uh8">
             <objects>
-                <controller identifier="TenTimesExerciseWorkoutIdentifier" id="62o-b3-ZDD" customClass="tenTimesExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
+                <controller identifier="TenTimesExerciseWorkoutIdentifier" id="62o-b3-ZDD" customClass="ExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Name" textAlignment="left" minimumScaleFactor="0.5" id="zfD-aS-I9c">
                             <fontDescription key="font" type="system" pointSize="30"/>
@@ -50,12 +80,12 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="278" y="24"/>
+            <point key="canvasLocation" x="591" y="30"/>
         </scene>
         <!--ThirtySecExerciseWorkoutIdentifier-->
         <scene sceneID="3h3-fs-Gdj">
             <objects>
-                <controller identifier="ThirtySecExerciseWorkoutIdentifier" id="SIj-ph-2q9" customClass="thirtySecExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
+                <controller identifier="ThirtySecExerciseWorkoutIdentifier" id="SIj-ph-2q9" customClass="ThirtySecExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Name" textAlignment="left" numberOfLines="0" id="con-6Y-Q6o">
                             <fontDescription key="font" type="system" pointSize="24"/>
@@ -77,7 +107,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="510" y="21"/>
+            <point key="canvasLocation" x="821" y="30"/>
         </scene>
     </scenes>
 </document>

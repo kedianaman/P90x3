@@ -7,6 +7,7 @@
 
 import WatchKit
 import Foundation
+import HealthKit
 
 
 struct ControllerIdentifier {
@@ -24,25 +25,29 @@ class MainMenuInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         currentlySelectedWorkout = workoutManager.workoutAtIndex(index: 0)
         self.setTitle("P90x3")
-        var wkPickerItems = [WKPickerItem]()
-        for i in 0...workoutManager.numberOfWorkouts() - 1 {
-            let workout = workoutManager.workoutAtIndex(index: i)
+        
+        // Populate picker
+        let wkPickerItems: [WKPickerItem] = workoutManager.allWorkouts().map { workout in
             let pickerItem = WKPickerItem()
             pickerItem.title = workout.name
-            wkPickerItems.append(pickerItem)
+            return pickerItem
         }
         workoutsPickerView.setItems(wkPickerItems)
     }
-    @IBAction func pickerSelected(_ value: Int) {
+    @IBAction func pickerItemChanged(_ value: Int) {
         currentlySelectedWorkout = workoutManager.workoutAtIndex(index: value)
     }
     
+    
     @IBAction func startButtonPressed() {
-        var identifiers = [String]()
-        for _ in 0..<currentlySelectedWorkout.excercises.count {
-    identifiers.append(ControllerIdentifier.tenTimesExerciseWorkoutIdentifier)
-        }
-        presentController(withNames: identifiers, contexts: currentlySelectedWorkout.excercises)
+        WKInterfaceController.reloadRootControllers(withNamesAndContexts: [(name: "WorkoutInterfaceController", context: currentlySelectedWorkout)])
+        
+        
+//        var identifiers = [String]()
+//        for _ in 0..<currentlySelectedWorkout.excercises.count {
+//    identifiers.append(ControllerIdentifier.tenTimesExerciseWorkoutIdentifier)
+//        }
+//        presentController(withNames: identifiers, contexts: currentlySelectedWorkout.excercises)
     }
     
 }
