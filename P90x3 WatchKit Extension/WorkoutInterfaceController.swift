@@ -18,13 +18,11 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     private var startDate: Date!
     private var endDate: Date!
     private var timer: Timer?
-    private let healthStore = HKHealthStore()
+    private let healthStoreManager = HealthStoreManager()
+    
     
     var workoutEvents = [HKWorkoutEvent]()
-    var totalEnergyBurned: Double = 0
-    var heartRate: Double = 0
     
-//    private let healthStoreManager = HealthStoreManager()
     
     // MARK: - IBOutlets
     
@@ -38,9 +36,8 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         super.awake(withContext: context)
         currentWorkout = context as! Workout
         setTitle(currentWorkout.name)
+        startDate = Date()
         setUpAndStartWorkout()
-        
-        // Configure interface objects here.
     }
     
     func setUpAndStartWorkout() {
@@ -53,7 +50,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
             fatalError(error.localizedDescription)
         }
         workoutSession.delegate = self
-        healthStore.start(workoutSession)
+        healthStoreManager.start(workoutSession)
     }
     
     // MARK: - IBActions
@@ -93,38 +90,29 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     }
     
     func startAccumulatingData() {
-//        startQuery(quantityTypeIdentifier: .heartRate)
-        startQuery(quantityTypeIdentifier: .activeEnergyBurned)
-    }
-    
-    func startQuery(quantityTypeIdentifier: HKQuantityTypeIdentifier) {
-        let datePredicate = HKQuery.predicateForSamples(withStart: startDate, end: nil, options: .strictStartDate)
-        let devicePredicate = HKQuery.predicateForObjects(from: [HKDevice.local()])
-        let queryPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [datePredicate, devicePredicate])
-        let updateHandler: (HKAnchoredObjectQuery, [HKSample]?, [HKDeletedObject]?, HKQueryAnchor?, Error?) -> Void = { query, samples, deletedObjecs, queryAnchor, error in
-            self.process(samples: samples, quantityTypeIdentifier: quantityTypeIdentifier)
-        }
-        let query = HKAnchoredObjectQuery(type: HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier)!, predicate: queryPredicate, anchor: nil, limit: HKObjectQueryNoLimit, resultsHandler: updateHandler)
-        query.updateHandler = updateHandler
-        healthStore.execute(query)
-    }
-    
-    func process(samples: [HKSample]?, quantityTypeIdentifier: HKQuantityTypeIdentifier) {
-        for sample in samples! {
-//            if quantityTypeIdentifier == HKQuantityTypeIdentifier.activeEnergyBurned {
-                if let sample = sample as? HKQuantitySample {
-                    totalEnergyBurned = totalEnergyBurned + sample.quantity.doubleValue(for: HKUnit.kilocalorie())
-//                }
+        healthStoreManager.startActiveEnergyBurnedQuery(from: startDate) { quantitySamples in
+            DispatchQueue.main.async {
+                guard !self.isPaused() else { return }
+                self.healthStoreManager.processActiveEnergySamples(quantitySamples)
+                self.updateLabels()
             }
         }
-        updateLabels()
+        healthStoreManager.startHeartRateQuery(from: startDate) { quantitySamples in
+            DispatchQueue.main.async {
+                guard !self.isPaused() else { return }
+                self.healthStoreManager.processHeartRateSamples(quantitySamples)
+                self.updateLabels()
+            }
+        }
     }
+    
+    
     
     // MARK: - UI
     
     private func updateLabels() {
-        caloriesLabel.setText("\(totalEnergyBurned) CAL")
-        heartRateLabel.setText("\(heartRate) BPM")
+        caloriesLabel.setText("\(healthStoreManager.totalEnergyBurned) CAL")
+        heartRateLabel.setText("\(healthStoreManager.heartRate) BPM")
     }
     
     private func updateState() {
@@ -140,6 +128,22 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
             
         }
     }
+    
+    
+    // MARK: - Convenience
+    
+    private func isPaused() -> Bool {
+        return (workoutSession.state == .paused)
+    }
+    
+    private func requestPauseOrResume() {
+        if isPaused() {
+            healthStoreManager.resume(workoutSession)
+        } else {
+            healthStoreManager.pause(workoutSession)
+        }
+    }
+    
     
 //    private func handleWorkoutSessionState(didChangeTo toState: HKWorkoutSessionState,
 //                                           from fromState: HKWorkoutSessionState) {
@@ -162,6 +166,29 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
 ////        updateLabels()
 ////        updateState()
 //    }
+    
+    //    func startQuery(quantityTypeIdentifier: HKQuantityTypeIdentifier) {
+    //        let datePredicate = HKQuery.predicateForSamples(withStart: startDate, end: nil, options: .strictStartDate)
+    //        let devicePredicate = HKQuery.predicateForObjects(from: [HKDevice.local()])
+    //        let queryPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [datePredicate, devicePredicate])
+    //        let updateHandler: (HKAnchoredObjectQuery, [HKSample]?, [HKDeletedObject]?, HKQueryAnchor?, Error?) -> Void = { query, samples, deletedObjecs, queryAnchor, error in
+    //            self.process(samples: samples, quantityTypeIdentifier: quantityTypeIdentifier)
+    //        }
+    //        let query = HKAnchoredObjectQuery(type: HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier)!, predicate: queryPredicate, anchor: nil, limit: HKObjectQueryNoLimit, resultsHandler: updateHandler)
+    //        query.updateHandler = updateHandler
+    //        healthStore.execute(query)
+    //    }
+    
+    //    func process(samples: [HKSample]?, quantityTypeIdentifier: HKQuantityTypeIdentifier) {
+    //        for sample in samples! {
+    ////            if quantityTypeIdentifier == HKQuantityTypeIdentifier.activeEnergyBurned {
+    //                if let sample = sample as? HKQuantitySample {
+    //                    totalEnergyBurned = totalEnergyBurned + sample.quantity.doubleValue(for: HKUnit.kilocalorie())
+    ////                }
+    //            }
+    //        }
+    //        updateLabels()
+    //    }
     
     
 }
