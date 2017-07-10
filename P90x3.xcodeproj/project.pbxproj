@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0E519F1F12419A00628A22 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0E519E1F12419A00628A22 /* HealthKit.framework */; };
+		ED0E51A21F12423000628A22 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0E51A11F12423000628A22 /* HealthKit.framework */; };
 		ED2DE1B21F08FBD5008DF7C7 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */; };
 		ED2DE1B41F08FCA6008DF7C7 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
 		ED2DE1B61F0957C4008DF7C7 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B51F0957C4008DF7C7 /* WorkoutsViewController.swift */; };
-		ED378DFF1F0FCFBC00731F36 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED378DFE1F0FCFBC00731F36 /* HealthKit.framework */; };
 		ED6DB0EF1F0B8FDC002CED80 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */; };
 		ED6DB0F01F0B8FE0002CED80 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
 		ED6DB0F21F0B962A002CED80 /* ExcerciseInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DB0F11F0B962A002CED80 /* ExcerciseInterfaceController.swift */; };
@@ -93,11 +94,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED0E519E1F12419A00628A22 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		ED0E51A01F12422F00628A22 /* P90x3 WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "P90x3 WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		ED0E51A11F12423000628A22 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsManager.swift; sourceTree = "<group>"; };
 		ED2DE1B51F0957C4008DF7C7 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		ED378DFC1F0FCFBC00731F36 /* P90x3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = P90x3.entitlements; sourceTree = "<group>"; };
-		ED378DFE1F0FCFBC00731F36 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		ED6DB0F11F0B962A002CED80 /* ExcerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseInterfaceController.swift; sourceTree = "<group>"; };
 		ED946B8C1F0BFCAB00DC80AF /* ThirtySecExcerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirtySecExcerciseInterfaceController.swift; sourceTree = "<group>"; };
 		EDA35D1F1F10C6BB003F6030 /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
@@ -133,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED378DFF1F0FCFBC00731F36 /* HealthKit.framework in Frameworks */,
+				ED0E519F1F12419A00628A22 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0E51A21F12423000628A22 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +168,8 @@
 		ED378DFD1F0FCFBC00731F36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ED378DFE1F0FCFBC00731F36 /* HealthKit.framework */,
+				ED0E51A11F12423000628A22 /* HealthKit.framework */,
+				ED0E519E1F12419A00628A22 /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 		EDC246561F079D20008C5AE2 /* P90x3 WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				ED0E51A01F12422F00628A22 /* P90x3 WatchKit Extension.entitlements */,
 				EDC246571F079D20008C5AE2 /* MainMenuInterfaceController.swift */,
 				ED6DB0F11F0B962A002CED80 /* ExcerciseInterfaceController.swift */,
 				EDA35D1F1F10C6BB003F6030 /* WorkoutInterfaceController.swift */,
@@ -378,6 +384,11 @@
 					};
 					EDC246511F079D20008C5AE2 = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -658,6 +669,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "P90x3 WatchKit Extension/P90x3 WatchKit Extension.entitlements";
 				DEVELOPMENT_TEAM = T252EPP745;
 				INFOPLIST_FILE = "P90x3 WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -675,6 +687,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "P90x3 WatchKit Extension/P90x3 WatchKit Extension.entitlements";
 				DEVELOPMENT_TEAM = T252EPP745;
 				INFOPLIST_FILE = "P90x3 WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

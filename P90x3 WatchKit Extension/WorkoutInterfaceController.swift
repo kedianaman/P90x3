@@ -19,6 +19,11 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     private var endDate: Date!
     private var timer: Timer?
     private let healthStore = HKHealthStore()
+    
+    var workoutEvents = [HKWorkoutEvent]()
+    var totalEnergyBurned: Double = 0
+    var heartRate: Double = 0
+    
 //    private let healthStoreManager = HealthStoreManager()
     
     // MARK: - IBOutlets
@@ -67,7 +72,8 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         switch toState {
         case .running:
             if fromState == .notStarted {
-//                startAccumulatingData()
+                print("Workout started")
+                startAccumulatingData()
             }
             break
         case .paused:
@@ -87,7 +93,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     }
     
     func startAccumulatingData() {
-        startQuery(quantityTypeIdentifier: .heartRate)
+//        startQuery(quantityTypeIdentifier: .heartRate)
         startQuery(quantityTypeIdentifier: .activeEnergyBurned)
     }
     
@@ -105,14 +111,20 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     func process(samples: [HKSample]?, quantityTypeIdentifier: HKQuantityTypeIdentifier) {
         for sample in samples! {
-            print(sample.sampleType)
+//            if quantityTypeIdentifier == HKQuantityTypeIdentifier.activeEnergyBurned {
+                if let sample = sample as? HKQuantitySample {
+                    totalEnergyBurned = totalEnergyBurned + sample.quantity.doubleValue(for: HKUnit.kilocalorie())
+//                }
+            }
         }
+        updateLabels()
     }
     
     // MARK: - UI
     
     private func updateLabels() {
-       // update labels
+        caloriesLabel.setText("\(totalEnergyBurned) CAL")
+        heartRateLabel.setText("\(heartRate) BPM")
     }
     
     private func updateState() {
