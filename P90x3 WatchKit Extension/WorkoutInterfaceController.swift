@@ -36,7 +36,6 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         super.awake(withContext: context)
         currentWorkout = context as! Workout
         setTitle(currentWorkout.name)
-        startDate = Date()
         setUpAndStartWorkout()
     }
     
@@ -70,6 +69,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         case .running:
             if fromState == .notStarted {
                 print("Workout started")
+                startDate = Date()
                 startAccumulatingData()
             }
             break
@@ -106,13 +106,27 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         }
     }
     
+    // MARK: - Timer
     
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.updateLabels()
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+    }
     
     // MARK: - UI
     
     private func updateLabels() {
         caloriesLabel.setText("\(healthStoreManager.totalEnergyBurned) CAL")
         heartRateLabel.setText("\(healthStoreManager.heartRate) BPM")
+        
+        let events = healthStoreManager.workoutEvents
+        let duration = computeDurationOfWorkout(withEvents: events, startDate: startDate, endDate: endDate)
+        durationLabel.setText(format(duration: duration))
     }
     
     private func updateState() {
@@ -143,52 +157,5 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
             healthStoreManager.pause(workoutSession)
         }
     }
-    
-    
-//    private func handleWorkoutSessionState(didChangeTo toState: HKWorkoutSessionState,
-//                                           from fromState: HKWorkoutSessionState) {
-//        switch (fromState, toState) {
-//        case (.notStarted, .running):
-//            startDate = Date()
-////            startTimer()
-////            startAccumulatingData()
-//
-//        case (_, .ended):
-////            stopAccumulatingData()
-//            endDate = Date()
-////            stopTimer()
-////            healthStoreManager.saveWorkout(withSession: workoutSession, from: startDate, to: endDate)
-//
-//        default:
-//            break
-//        }
-//
-////        updateLabels()
-////        updateState()
-//    }
-    
-    //    func startQuery(quantityTypeIdentifier: HKQuantityTypeIdentifier) {
-    //        let datePredicate = HKQuery.predicateForSamples(withStart: startDate, end: nil, options: .strictStartDate)
-    //        let devicePredicate = HKQuery.predicateForObjects(from: [HKDevice.local()])
-    //        let queryPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [datePredicate, devicePredicate])
-    //        let updateHandler: (HKAnchoredObjectQuery, [HKSample]?, [HKDeletedObject]?, HKQueryAnchor?, Error?) -> Void = { query, samples, deletedObjecs, queryAnchor, error in
-    //            self.process(samples: samples, quantityTypeIdentifier: quantityTypeIdentifier)
-    //        }
-    //        let query = HKAnchoredObjectQuery(type: HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier)!, predicate: queryPredicate, anchor: nil, limit: HKObjectQueryNoLimit, resultsHandler: updateHandler)
-    //        query.updateHandler = updateHandler
-    //        healthStore.execute(query)
-    //    }
-    
-    //    func process(samples: [HKSample]?, quantityTypeIdentifier: HKQuantityTypeIdentifier) {
-    //        for sample in samples! {
-    ////            if quantityTypeIdentifier == HKQuantityTypeIdentifier.activeEnergyBurned {
-    //                if let sample = sample as? HKQuantitySample {
-    //                    totalEnergyBurned = totalEnergyBurned + sample.quantity.doubleValue(for: HKUnit.kilocalorie())
-    ////                }
-    //            }
-    //        }
-    //        updateLabels()
-    //    }
-    
     
 }
