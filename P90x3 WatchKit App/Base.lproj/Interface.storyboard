@@ -37,21 +37,42 @@
             <objects>
                 <controller identifier="WorkoutInterfaceController" id="mgO-Fd-CBq" customClass="WorkoutInterfaceController" customModule="P90x3_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="0:32:41" textAlignment="left" id="dIS-Om-mKh">
-                            <accessibilityTraits key="accessibilityTraits" image="YES" staticText="YES"/>
-                            <fontDescription key="font" type="system" pointSize="24"/>
-                        </label>
-                        <label alignment="left" text="242 CAL" textAlignment="left" id="L81-oM-Snr">
-                            <fontDescription key="font" type="system" pointSize="24"/>
-                        </label>
-                        <label alignment="left" text="101 BPM" textAlignment="left" id="gSc-Vg-eeA">
-                            <fontDescription key="font" type="system" pointSize="24"/>
-                        </label>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="End Workout" id="HQP-lI-joC">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="backgroundColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="workoutEnded" destination="mgO-Fd-CBq" id="WDQ-50-Tje"/>
                             </connections>
                         </button>
+                        <group width="1" height="0.69999999999999996" alignment="left" layout="vertical" id="M2w-ki-m4M">
+                            <items>
+                                <group width="1" alignment="left" spacing="5" id="K4B-2C-9cB">
+                                    <items>
+                                        <imageView width="30" height="30" alignment="left" image="Time Icon" contentMode="scaleAspectFit" id="1QO-NL-OfD"/>
+                                        <label alignment="left" verticalAlignment="center" text="0:32:41" textAlignment="left" id="dIS-Om-mKh">
+                                            <accessibilityTraits key="accessibilityTraits" image="YES" staticText="YES"/>
+                                            <fontDescription key="font" type="system" pointSize="24"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" spacing="5" id="ztw-Tc-OhR">
+                                    <items>
+                                        <imageView width="30" height="30" alignment="left" image="Colories Icon" contentMode="scaleAspectFit" id="adP-WS-c30"/>
+                                        <label width="85" alignment="left" verticalAlignment="center" text="242 CAL" textAlignment="left" id="L81-oM-Snr">
+                                            <fontDescription key="font" type="system" pointSize="24"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" spacing="5" id="aWr-H3-5tV">
+                                    <items>
+                                        <imageView width="27" height="27" alignment="left" image="Heart Icon" contentMode="scaleAspectFit" id="xkm-XE-ffV"/>
+                                        <label alignment="left" verticalAlignment="center" text="101 BPM" textAlignment="left" id="gSc-Vg-eeA">
+                                            <fontDescription key="font" type="system" pointSize="24"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="caloriesLabel" destination="L81-oM-Snr" id="5Eh-UH-KOn"/>
@@ -61,6 +82,66 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="25" y="29"/>
+        </scene>
+        <!--Summary-->
+        <scene sceneID="7yc-yl-xDM">
+            <objects>
+                <controller identifier="SummaryInterfaceControllerIdentifier" title="Summary" id="t8B-g9-qev" customClass="SummaryInterfaceController" customModule="P90x3_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Eccentric Upper" minimumScaleFactor="0.5" id="2KE-3e-7et">
+                            <color key="textColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="20"/>
+                        </label>
+                        <label alignment="left" text="16 July 2017" id="LF7-5k-aSQ">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                        <label alignment="left" text="7:14 PM - 7:47 PM" id="zm6-LN-nSv"/>
+                        <separator alignment="left" id="iFR-J9-Sa7">
+                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </separator>
+                        <label alignment="left" text="Total Time" id="q1f-Qe-HCg"/>
+                        <label alignment="left" text="0:32:41" minimumScaleFactor="0.5" id="2vH-wx-3NY">
+                            <color key="textColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="30"/>
+                        </label>
+                        <separator alignment="left" id="u6M-gf-vv2">
+                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </separator>
+                        <label alignment="left" text="Avg Heart Rate" id="h5F-Hz-TQC"/>
+                        <label alignment="left" text="101 BPM" minimumScaleFactor="0.5" id="j8p-R4-tVS">
+                            <color key="textColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="30"/>
+                        </label>
+                        <separator alignment="left" id="93E-tP-lu0">
+                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </separator>
+                        <label alignment="left" text="Total Calories" id="JGn-kl-w3U"/>
+                        <label alignment="left" text="242 CAL" minimumScaleFactor="0.5" id="sXA-U0-zGT">
+                            <color key="textColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="30"/>
+                        </label>
+                        <separator alignment="left" id="Kh5-Bs-gFa">
+                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </separator>
+                        <button width="1" alignment="left" title="Done" id="L9p-nc-76g">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="doneButtonPressed" destination="t8B-g9-qev" id="lZj-K6-YWI"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="dateLabel" destination="LF7-5k-aSQ" id="aqf-E2-4Cd"/>
+                        <outlet property="durationLabel" destination="2vH-wx-3NY" id="Yit-9K-E4P"/>
+                        <outlet property="heartRateLabel" destination="j8p-R4-tVS" id="jOk-Nb-a4c"/>
+                        <outlet property="timeLabel" destination="zm6-LN-nSv" id="H6q-bF-ALn"/>
+                        <outlet property="totalCaloriesLabel" destination="sXA-U0-zGT" id="0FV-Dp-f3h"/>
+                        <outlet property="workoutTitleLabel" destination="2KE-3e-7et" id="Nc5-0g-mjc"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="259" y="29"/>
         </scene>
         <!--TenTimesExerciseWorkoutIdentifier-->
         <scene sceneID="708-yU-uh8">
@@ -80,34 +161,8 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="591" y="30"/>
-        </scene>
-        <!--ThirtySecExerciseWorkoutIdentifier-->
-        <scene sceneID="3h3-fs-Gdj">
-            <objects>
-                <controller identifier="ThirtySecExerciseWorkoutIdentifier" id="SIj-ph-2q9" customClass="ThirtySecExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
-                    <items>
-                        <label alignment="left" text="Name" textAlignment="left" numberOfLines="0" id="con-6Y-Q6o">
-                            <fontDescription key="font" type="system" pointSize="24"/>
-                        </label>
-                        <timer alignment="center" verticalAlignment="center" textAlignment="center" previewedSeconds="30" id="59a-5y-WC9">
-                            <fontDescription key="font" type="system" pointSize="30"/>
-                            <calendarUnit key="units" minute="YES" second="YES"/>
-                        </timer>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start" id="eqk-K5-dcH">
-                            <connections>
-                                <action selector="startButtonPressed" destination="SIj-ph-2q9" id="b3k-ww-i3V"/>
-                            </connections>
-                        </button>
-                    </items>
-                    <connections>
-                        <outlet property="startStopButton" destination="eqk-K5-dcH" id="b9Y-j3-pPf"/>
-                        <outlet property="workoutTimer" destination="59a-5y-WC9" id="YWD-WC-WSG"/>
-                        <outlet property="workoutTitleLabel" destination="con-6Y-Q6o" id="Cg2-kV-fHH"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="821" y="30"/>
+            <point key="canvasLocation" x="587" y="13"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.99293786287307739" green="0.54674017429351807" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

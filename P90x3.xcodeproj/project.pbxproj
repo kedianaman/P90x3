@@ -13,10 +13,10 @@
 		ED2DE1B21F08FBD5008DF7C7 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */; };
 		ED2DE1B41F08FCA6008DF7C7 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
 		ED2DE1B61F0957C4008DF7C7 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B51F0957C4008DF7C7 /* WorkoutsViewController.swift */; };
+		ED3ACB921F18AA2600B6535D /* SummaryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3ACB911F18AA2600B6535D /* SummaryInterfaceController.swift */; };
 		ED6DB0EF1F0B8FDC002CED80 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */; };
 		ED6DB0F01F0B8FE0002CED80 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
 		ED6DB0F21F0B962A002CED80 /* ExcerciseInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DB0F11F0B962A002CED80 /* ExcerciseInterfaceController.swift */; };
-		ED946B8D1F0BFCAB00DC80AF /* ThirtySecExcerciseInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED946B8C1F0BFCAB00DC80AF /* ThirtySecExcerciseInterfaceController.swift */; };
 		EDA35D201F10C6BB003F6030 /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA35D1F1F10C6BB003F6030 /* WorkoutInterfaceController.swift */; };
 		EDA35D281F10EA04003F6030 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA35D271F10EA04003F6030 /* HealthStoreManager.swift */; };
 		EDA35D291F10EA04003F6030 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA35D271F10EA04003F6030 /* HealthStoreManager.swift */; };
@@ -103,8 +103,8 @@
 		ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsManager.swift; sourceTree = "<group>"; };
 		ED2DE1B51F0957C4008DF7C7 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		ED378DFC1F0FCFBC00731F36 /* P90x3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = P90x3.entitlements; sourceTree = "<group>"; };
+		ED3ACB911F18AA2600B6535D /* SummaryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryInterfaceController.swift; sourceTree = "<group>"; };
 		ED6DB0F11F0B962A002CED80 /* ExcerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseInterfaceController.swift; sourceTree = "<group>"; };
-		ED946B8C1F0BFCAB00DC80AF /* ThirtySecExcerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirtySecExcerciseInterfaceController.swift; sourceTree = "<group>"; };
 		EDA35D1F1F10C6BB003F6030 /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
 		EDA35D271F10EA04003F6030 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		EDAE37A61F07A9CF001597A1 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
@@ -254,8 +254,8 @@
 				EDC246571F079D20008C5AE2 /* MainMenuInterfaceController.swift */,
 				ED6DB0F11F0B962A002CED80 /* ExcerciseInterfaceController.swift */,
 				EDA35D1F1F10C6BB003F6030 /* WorkoutInterfaceController.swift */,
+				ED3ACB911F18AA2600B6535D /* SummaryInterfaceController.swift */,
 				EDA35D271F10EA04003F6030 /* HealthStoreManager.swift */,
-				ED946B8C1F0BFCAB00DC80AF /* ThirtySecExcerciseInterfaceController.swift */,
 				EDC246591F079D20008C5AE2 /* ExtensionDelegate.swift */,
 				EDC2465B1F079D20008C5AE2 /* ComplicationController.swift */,
 				ED2B787C1F13ECBD00826501 /* Utilities.swift */,
@@ -496,13 +496,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3ACB921F18AA2600B6535D /* SummaryInterfaceController.swift in Sources */,
 				EDC2465A1F079D20008C5AE2 /* ExtensionDelegate.swift in Sources */,
 				EDC246581F079D20008C5AE2 /* MainMenuInterfaceController.swift in Sources */,
 				EDC2465C1F079D20008C5AE2 /* ComplicationController.swift in Sources */,
 				ED6DB0F01F0B8FE0002CED80 /* WorkoutsManager.swift in Sources */,
 				EDA35D291F10EA04003F6030 /* HealthStoreManager.swift in Sources */,
 				ED6DB0EF1F0B8FDC002CED80 /* Workout.swift in Sources */,
-				ED946B8D1F0BFCAB00DC80AF /* ThirtySecExcerciseInterfaceController.swift in Sources */,
 				EDA35D201F10C6BB003F6030 /* WorkoutInterfaceController.swift in Sources */,
 				ED2B787D1F13ECBD00826501 /* Utilities.swift in Sources */,
 				ED6DB0F21F0B962A002CED80 /* ExcerciseInterfaceController.swift in Sources */,

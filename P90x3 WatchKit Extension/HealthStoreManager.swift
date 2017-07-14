@@ -8,6 +8,7 @@
 import Foundation
 import HealthKit
 import CoreLocation
+import WatchKit
 
 class HealthStoreManager: NSObject {
     // MARK: - Properties
@@ -15,7 +16,9 @@ class HealthStoreManager: NSObject {
     var workoutEvents = [HKWorkoutEvent]()
     var totalEnergyBurned: Double = 0
     var totalDistance: Double = 0
-    var heartRate: Double = 0
+    var currentHeartRate: Double = 0
+    var totalHeartRate: Double = 0
+    var heartRateCount: Int = 0
     
     private let healthStore = HKHealthStore()
     private var activeDataQueries = [HKQuery]()
@@ -95,6 +98,59 @@ class HealthStoreManager: NSObject {
         activeDataQueries.append(query)
     }
     
+    // MARK: - Saving Data
+    
+    func saveWorkout(withSession workoutSession: HKWorkoutSession, from startDate: Date, to endDate: Date, workoutName: String) {
+        // Create and save a workout sample
+        let configuration = workoutSession.workoutConfiguration
+        var metadata = [String: Any]()
+        metadata[HKMetadataKeyIndoorWorkout] = (configuration.locationType == .indoor)
+        metadata[HKMetadataKeyWorkoutBrandName] = workoutName
+        let workout = HKWorkout(activityType: configuration.activityType,
+                                start: startDate,
+                                end: endDate,
+                                workoutEvents: workoutEvents,
+                                totalEnergyBurned: totalEnergyBurnedQuantity(),
+                                totalDistance: totalDistanceQuantity(),
+                                metadata: metadata)
+        
+        healthStore.save(workout) { success, _ in
+            if success {
+                self.addSamples(toWorkout: workout, from: startDate, to: endDate)
+            }
+        }
+    }
+    
+    private func addSamples(toWorkout workout: HKWorkout, from startDate: Date, to endDate: Date) {
+        // Create energy and distance samples
+        let totalEnergyBurnedSample = HKQuantitySample(type: HKQuantityType.activeEnergyBurned(),
+                                                       quantity: totalEnergyBurnedQuantity(),
+                                                       start: startDate,
+                                                       end: endDate)
+        
+        let heartRateSample = HKQuantitySample(type: HKQuantityType.heartRate(), quantity: averageHeartRateQuantity(), start: startDate, end: endDate)
+        
+        print("Added samples. Average heartrate: \(averageHeartRateQuantity()).")
+//        let totalDistanceSample = HKQuantitySample(type: HKQuantityType.distanceWalkingRunning(),
+//                                                   quantity: totalDistanceQuantity(),
+//                                                   start: startDate,
+//                                                   end: endDate)
+        
+        // Add samples to workout
+        healthStore.add([totalEnergyBurnedSample, heartRateSample], to: workout) { (success: Bool, error: Error?) in
+            guard success else {
+                print("Adding workout subsamples failed with error: \(String(describing: error))")
+                return
+            }
+            
+            // Samples have been added
+            DispatchQueue.main.async {
+                WKInterfaceController.reloadRootControllers(withNames: ["SummaryInterfaceControllerIdentifier"], contexts: [workout])
+            }
+        }
+        
+    }
+    
     // MARK: - Convenience
     
     func processWalkingRunningSamples(_ samples: [HKQuantitySample]) {
@@ -118,8 +174,13 @@ class HealthStoreManager: NSObject {
     func processHeartRateSamples(_ samples: [HKQuantitySample]) {
         for sample in samples {
             print(sample.quantity)
-            heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
+            currentHeartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
         }
+        if currentHeartRate != 0.0 {
+            totalHeartRate = totalHeartRate + currentHeartRate
+            heartRateCount = heartRateCount + 1
+        }
+        
     }
     
     private func totalEnergyBurnedQuantity() -> HKQuantity {
@@ -129,5 +190,28 @@ class HealthStoreManager: NSObject {
     private func totalDistanceQuantity() -> HKQuantity {
         return HKQuantity(unit: HKUnit.meter(), doubleValue: totalDistance)
     }
-
+    
+    private func averageHeartRateQuantity() -> HKQuantity {
+        return HKQuantity(unit: HKUnit(from: "count/min"), doubleValue: totalHeartRate/Double(heartRateCount))
+    }
 }
+
+
+extension HKQuantityType {
+    static func distanceWalkingRunning() -> HKQuantityType {
+        return HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
+    }
+    
+    static func distanceCycling() -> HKQuantityType {
+        return HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceCycling)!
+    }
+    
+    static func activeEnergyBurned() -> HKQuantityType {
+        return HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
+    }
+    
+    static func heartRate() -> HKQuantityType {
+        return HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+    }
+}
+

@@ -56,6 +56,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     @IBAction func workoutEnded() {
         
+        healthStoreManager.end(workoutSession)
     }
     
     // MARK: - HKWorkoutSessionDelegate
@@ -69,6 +70,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         case .running:
             if fromState == .notStarted {
                 print("Workout started")
+                startTimer()
                 startDate = Date()
                 startAccumulatingData()
             }
@@ -76,11 +78,14 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         case .paused:
             break
         case .ended:
+            stopAccumulatingData()
+            endDate = Date()
+            stopTimer()
+            healthStoreManager.saveWorkout(withSession: workoutSession, from: startDate, to: endDate, workoutName: currentWorkout.name)
             break
         default:
             break
         }
-        
         updateLabels()
         updateState()
     }
@@ -106,9 +111,14 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
         }
     }
     
+    func stopAccumulatingData() {
+        healthStoreManager.stopAccumulatingData()
+    }
+    
     // MARK: - Timer
     
     private func startTimer() {
+        // Not working. Fix
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.updateLabels()
         }
@@ -122,7 +132,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     private func updateLabels() {
         caloriesLabel.setText("\(healthStoreManager.totalEnergyBurned) CAL")
-        heartRateLabel.setText("\(healthStoreManager.heartRate) BPM")
+        heartRateLabel.setText("\(healthStoreManager.currentHeartRate) BPM")
         
         let events = healthStoreManager.workoutEvents
         let duration = computeDurationOfWorkout(withEvents: events, startDate: startDate, endDate: endDate)
