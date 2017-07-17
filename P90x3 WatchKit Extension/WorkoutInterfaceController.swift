@@ -14,11 +14,12 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     // MARK: - Properties
     
+    private let parentConnector = ParentConnector()
+    private let healthStoreManager = HealthStoreManager()
     private var workoutSession: HKWorkoutSession!
     private var startDate: Date!
     private var endDate: Date!
     private var timer: Timer?
-    private let healthStoreManager = HealthStoreManager()
     
     
     var workoutEvents = [HKWorkoutEvent]()
@@ -142,14 +143,19 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     private func updateState() {
         switch workoutSession.state {
         case .notStarted:
-            break
-        case .running:
-            break
-        case .paused:
-            break
-        case .ended:
-            break
+            setTitle(NSLocalizedString("Starting", comment: "Title when the workout session is starting"))
             
+        case .running:
+            setTitle(WorkoutType(workoutSession.workoutConfiguration.activityType).displayString())
+            parentConnector.send(state: "running")
+            
+        case .paused:
+            setTitle(NSLocalizedString("Pause", comment: "Title when the workout session is paused"))
+            parentConnector.send(state: "paused")
+            
+        case .ended:
+            setTitle(NSLocalizedString("Ended", comment: "Title when the workout session has ended"))
+            parentConnector.send(state: "ended")
         }
     }
     

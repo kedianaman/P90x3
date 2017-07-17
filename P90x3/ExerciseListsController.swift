@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ExerciseListsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var workoutTitleLabel: UILabel!
     @IBOutlet weak var excercisesTableView: UITableView!
     
@@ -27,12 +27,17 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         currentWorkout = workoutManger.workoutAtIndex(index: currentWorkoutIndex)
         workoutTitleLabel.text = currentWorkout.name
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
     }
     
     // MARK: IB Actions
     @IBAction func doneButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func nextButtonPressed(_ sender: Any) {
         if currentWorkoutIndex < workoutManger.numberOfWorkouts() - 1 {
             currentWorkoutIndex = currentWorkoutIndex + 1
@@ -43,6 +48,9 @@ class WorkoutsViewController: UIViewController, UITableViewDelegate, UITableView
         if currentWorkoutIndex > 0 {
             currentWorkoutIndex = currentWorkoutIndex - 1
         }
+    }
+    
+    @IBAction func startButtonPressed(_ sender: Any) {
     }
     
     // MARK: TableView Methods
