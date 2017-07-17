@@ -11,8 +11,8 @@ import HealthKit
 
 
 struct ControllerIdentifier {
-    static let tenTimesExerciseWorkoutIdentifier = "TenTimesExerciseWorkoutIdentifier"
-    static let thirtySecExerciseWorkoutIdentifier = "ThirtySecExerciseWorkoutIdentifier"
+    static let ExerciseICIdentifier = "ExerciseInterfaceControllerIdentifer"
+    static let WorkoutICIdentifier = "WorkoutInterfaceControllerIdentifier"
 }
 
 class MainMenuInterfaceController: WKInterfaceController {
@@ -40,14 +40,7 @@ class MainMenuInterfaceController: WKInterfaceController {
     
     
     @IBAction func startButtonPressed() {
-        WKInterfaceController.reloadRootControllers(withNamesAndContexts: [(name: "WorkoutInterfaceController", context: currentlySelectedWorkout)])
-        
-        
-//        var identifiers = [String]()
-//        for _ in 0..<currentlySelectedWorkout.excercises.count {
-//    identifiers.append(ControllerIdentifier.tenTimesExerciseWorkoutIdentifier)
-//        }
-//        presentController(withNames: identifiers, contexts: currentlySelectedWorkout.excercises)
+        WKInterfaceController.reloadRootPageControllers(withNames: [ControllerIdentifier.WorkoutICIdentifier, ControllerIdentifier.ExerciseICIdentifier], contexts: [currentlySelectedWorkout, currentlySelectedWorkout], orientation: .horizontal, pageIndex: 0)
     }
     
 }

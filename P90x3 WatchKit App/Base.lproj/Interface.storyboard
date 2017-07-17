@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13034"/>
     </dependencies>
     <scenes>
-        <!--Main Menu Interface Controller-->
+        <!--MainMenuInterfaceControllerIdentifier-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="MainMenuInterfaceController" customModule="P90x3_WatchKit_App" customModuleProvider="target">
+                <controller identifier="MainMenuInterfaceControllerIdentifier" id="AgC-eL-Hgc" customClass="MainMenuInterfaceController" customModule="P90x3_WatchKit_App" customModuleProvider="target">
                     <items>
                         <picker height="109" alignment="left" id="IZ1-Fm-pFG">
                             <connections>
@@ -32,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="-203" y="30"/>
         </scene>
-        <!--WorkoutInterfaceController-->
+        <!--WorkoutInterfaceControllerIdentifier-->
         <scene sceneID="Xs8-yi-cjr">
             <objects>
-                <controller identifier="WorkoutInterfaceController" id="mgO-Fd-CBq" customClass="WorkoutInterfaceController" customModule="P90x3_WatchKit_Extension">
+                <controller identifier="WorkoutInterfaceControllerIdentifier" id="mgO-Fd-CBq" customClass="WorkoutInterfaceController" customModule="P90x3_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="End Workout" id="HQP-lI-joC">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,7 +40,7 @@
                                 <action selector="workoutEnded" destination="mgO-Fd-CBq" id="WDQ-50-Tje"/>
                             </connections>
                         </button>
-                        <group width="1" height="0.69999999999999996" alignment="left" layout="vertical" id="M2w-ki-m4M">
+                        <group width="1" height="0.75" alignment="left" verticalAlignment="center" layout="vertical" spacing="10" id="M2w-ki-m4M">
                             <items>
                                 <group width="1" alignment="left" spacing="5" id="K4B-2C-9cB">
                                     <items>
@@ -143,21 +139,26 @@
             </objects>
             <point key="canvasLocation" x="259" y="29"/>
         </scene>
-        <!--TenTimesExerciseWorkoutIdentifier-->
+        <!--ExerciseInterfaceControllerIdentifer-->
         <scene sceneID="708-yU-uh8">
             <objects>
-                <controller identifier="TenTimesExerciseWorkoutIdentifier" id="62o-b3-ZDD" customClass="ExcerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
+                <controller identifier="ExerciseInterfaceControllerIdentifer" id="62o-b3-ZDD" customClass="ExerciseInterfaceController" customModule="P90x3_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="Name" textAlignment="left" minimumScaleFactor="0.5" id="zfD-aS-I9c">
+                        <label alignment="left" text="Name" textAlignment="left" numberOfLines="0" minimumScaleFactor="0.0" id="zfD-aS-I9c">
                             <fontDescription key="font" type="system" pointSize="30"/>
                         </label>
                         <label alignment="left" text="Type" id="sUa-HZ-Fwh">
                             <fontDescription key="font" type="system" weight="light" pointSize="20"/>
                         </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Button" id="9y6-c7-cTg">
+                            <connections>
+                                <action selector="nextButtonPressed" destination="62o-b3-ZDD" id="l6S-U3-kAD"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
+                        <outlet property="exerciseIndexLabel" destination="sUa-HZ-Fwh" id="PHO-lh-rob"/>
                         <outlet property="workoutTitleLabel" destination="zfD-aS-I9c" id="udO-UV-HPz"/>
-                        <outlet property="workoutTypeLabel" destination="sUa-HZ-Fwh" id="PHO-lh-rob"/>
                     </connections>
                 </controller>
             </objects>

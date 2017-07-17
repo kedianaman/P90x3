@@ -38,13 +38,16 @@ class SummaryInterfaceController: WKInterfaceController {
         totalCaloriesLabel.setText(format(totalEnergyBurned: workout.totalEnergyBurned))
         dateLabel.setText(dateDescription(date: workout.startDate))
         timeLabel.setText(timeDescription())
+        print(workout.sampleType)
         
         
     }
 
     @IBAction func doneButtonPressed() {
-        dismiss()
-        
+        WKInterfaceController.reloadRootPageControllers(withNames: ["MainMenuInterfaceControllerIdentifier"],
+                                                        contexts: nil,
+                                                        orientation: .vertical,
+                                                        pageIndex: 0)
     }
     
     func dateDescription(date: Date) -> String {
