@@ -57,6 +57,7 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     
     @IBAction func workoutEnded() {
         
+
         healthStoreManager.end(workoutSession)
     }
     
@@ -143,18 +144,19 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     private func updateState() {
         switch workoutSession.state {
         case .notStarted:
-            setTitle(NSLocalizedString("Starting", comment: "Title when the workout session is starting"))
+//            setTitle(NSLocalizedString("Starting", comment: "Title when the workout session is starting"))
+            print("Starting")
             
         case .running:
-            setTitle(WorkoutType(workoutSession.workoutConfiguration.activityType).displayString())
+//            setTitle(WorkoutType(workoutSession.workoutConfiguration.activityType).displayString())
             parentConnector.send(state: "running")
             
         case .paused:
-            setTitle(NSLocalizedString("Pause", comment: "Title when the workout session is paused"))
+//            setTitle(NSLocalizedString("Pause", comment: "Title when the workout session is paused"))
             parentConnector.send(state: "paused")
             
         case .ended:
-            setTitle(NSLocalizedString("Ended", comment: "Title when the workout session has ended"))
+//            setTitle(NSLocalizedString("Ended", comment: "Title when the workout session has ended"))
             parentConnector.send(state: "ended")
         }
     }

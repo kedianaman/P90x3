@@ -31,7 +31,6 @@ class SummaryInterfaceController: WKInterfaceController {
         super.willActivate()
         
         guard let workout = workout else { return }
-        
         let workoutName = workout.metadata![HKMetadataKeyWorkoutBrandName] as! String
         workoutTitleLabel.setText(workoutName)
         durationLabel.setText(format(duration: workout.duration))

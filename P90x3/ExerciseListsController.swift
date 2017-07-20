@@ -51,6 +51,14 @@ class ExerciseListsController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "presentWorkoutSegue" {
+            let workoutViewController = segue.destination as? WorkoutViewController
+            workoutViewController?.workout = currentWorkout
+        }
     }
     
     // MARK: TableView Methods

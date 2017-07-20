@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13034"/>
     </dependencies>
@@ -150,7 +154,9 @@
                         <label alignment="left" text="Type" id="sUa-HZ-Fwh">
                             <fontDescription key="font" type="system" weight="light" pointSize="20"/>
                         </label>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Button" id="9y6-c7-cTg">
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Next" id="9y6-c7-cTg">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="nextButtonPressed" destination="62o-b3-ZDD" id="l6S-U3-kAD"/>
                             </connections>

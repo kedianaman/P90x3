@@ -29,6 +29,7 @@ class WorkoutViewController: UIViewController, WCSessionDelegate {
         workoutConfiguration = HKWorkoutConfiguration()
         workoutConfiguration.activityType = .traditionalStrengthTraining
         workoutConfiguration.locationType = .indoor
+        self.navigationItem.title = workout!.name
         startWatchApp()
     }
     

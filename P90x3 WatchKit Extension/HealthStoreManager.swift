@@ -113,7 +113,6 @@ class HealthStoreManager: NSObject {
                                 totalEnergyBurned: totalEnergyBurnedQuantity(),
                                 totalDistance: totalDistanceQuantity(),
                                 metadata: metadata)
-        
         healthStore.save(workout) { success, _ in
             if success {
                 self.addSamples(toWorkout: workout, from: startDate, to: endDate)
@@ -131,10 +130,6 @@ class HealthStoreManager: NSObject {
         let heartRateSample = HKQuantitySample(type: HKQuantityType.heartRate(), quantity: averageHeartRateQuantity(), start: startDate, end: endDate)
         
         print("Added samples. Average heartrate: \(averageHeartRateQuantity()).")
-//        let totalDistanceSample = HKQuantitySample(type: HKQuantityType.distanceWalkingRunning(),
-//                                                   quantity: totalDistanceQuantity(),
-//                                                   start: startDate,
-//                                                   end: endDate)
         
         // Add samples to workout
         healthStore.add([totalEnergyBurnedSample, heartRateSample], to: workout) { (success: Bool, error: Error?) in
@@ -148,7 +143,6 @@ class HealthStoreManager: NSObject {
                 WKInterfaceController.reloadRootControllers(withNames: ["SummaryInterfaceControllerIdentifier"], contexts: [workout])
             }
         }
-        
     }
     
     // MARK: - Convenience

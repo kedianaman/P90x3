@@ -96,23 +96,15 @@ func format(totalEnergyBurned: Double) -> String {
     return String(format: formatString, totalEnergyBurned, caloriesString)
 }
 
+//func format(totalEnergyBurned: HKQuantity?) -> String {
+//    return format(totalEnergyBurned: totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0)
+//}
+
 func format(totalEnergyBurned: HKQuantity?) -> String {
-    return format(totalEnergyBurned: totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0)
+    return String("\(totalEnergyBurned!.doubleValue(for: .kilocalorie())) CAL")
 }
 
 
-
-// MARK: - Total Distance
-
-func format(totalDistance: Double) -> String {
-    let metersString = NSLocalizedString("Meters", comment: "Unit display for Calories")
-    let formatString = NSLocalizedString("VALUE_%@_UNIT_%@", comment: "Label for numeric value with unit")
-    return String(format: formatString, totalDistance, metersString)
-}
-
-func format(totalDistance: HKQuantity?) -> String {
-    return format(totalDistance: totalDistance?.doubleValue(for: .meter()) ?? 0)
-}
 
 // MARK: - Duration
 
@@ -152,8 +144,9 @@ func computeDurationOfWorkout(withEvents workoutEvents: [HKWorkoutEvent]?,
 func format(duration: TimeInterval) -> String {
     let durationFormatter = DateComponentsFormatter()
     durationFormatter.unitsStyle = .positional
-    durationFormatter.allowedUnits = [.second, .minute, .hour]
+    durationFormatter.allowedUnits = [.nanosecond, .second, .minute, .hour]
     durationFormatter.zeroFormattingBehavior = .pad
+    durationFormatter.allowsFractionalUnits = true
     
     if let string = durationFormatter.string(from: duration) {
         return string
