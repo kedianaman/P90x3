@@ -11,16 +11,19 @@ import WatchConnectivity
 
 class WorkoutViewController: UIViewController, WCSessionDelegate {
     
-    // MARK: - Properties
-    
+    // MARK: - IB Outlets
+  
     @IBOutlet weak var statusLabel: UILabel!
-    
+
+    // MARK: - Properties
     var workout: Workout?
     var workoutConfiguration: HKWorkoutConfiguration!
     private let healthStore = HKHealthStore()
     private var wcSessionActivationCompletion: ((WCSession) -> Void)?
     private var watchConnectivitySession: WCSession?
     private var stateDate: Date?
+    
+    
     
     // MARK: - UIViewController
     

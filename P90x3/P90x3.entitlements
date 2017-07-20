@@ -4,5 +4,7 @@
 <dict>
 	<key>com.apple.developer.healthkit</key>
 	<true/>
+	<key>inter-app-audio</key>
+	<true/>
 </dict>
 </plist>

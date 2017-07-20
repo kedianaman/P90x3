@@ -13,6 +13,8 @@
 		ED2DE1B41F08FCA6008DF7C7 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
 		ED2DE1B61F0957C4008DF7C7 /* ExerciseListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B51F0957C4008DF7C7 /* ExerciseListsController.swift */; };
 		ED3ACB921F18AA2600B6535D /* SummaryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3ACB911F18AA2600B6535D /* SummaryInterfaceController.swift */; };
+		ED6050981F20CA1100876D29 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6050971F20CA1100876D29 /* AudioToolbox.framework */; };
+		ED60509A1F20CF6200876D29 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6050991F20CF6200876D29 /* MusicPlayerViewController.swift */; };
 		ED6DB0EF1F0B8FDC002CED80 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B11F08FBD5008DF7C7 /* Workout.swift */; };
 		ED6DB0F01F0B8FE0002CED80 /* WorkoutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */; };
 		ED6DB0F21F0B962A002CED80 /* ExerciseInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DB0F11F0B962A002CED80 /* ExerciseInterfaceController.swift */; };
@@ -105,6 +107,8 @@
 		ED2DE1B51F0957C4008DF7C7 /* ExerciseListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListsController.swift; sourceTree = "<group>"; };
 		ED378DFC1F0FCFBC00731F36 /* P90x3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = P90x3.entitlements; sourceTree = "<group>"; };
 		ED3ACB911F18AA2600B6535D /* SummaryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryInterfaceController.swift; sourceTree = "<group>"; };
+		ED6050971F20CA1100876D29 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ED6050991F20CF6200876D29 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		ED6DB0F11F0B962A002CED80 /* ExerciseInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInterfaceController.swift; sourceTree = "<group>"; };
 		EDA35D1F1F10C6BB003F6030 /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
 		EDA35D271F10EA04003F6030 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0E519F1F12419A00628A22 /* HealthKit.framework in Frameworks */,
+				ED6050981F20CA1100876D29 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +179,7 @@
 		ED378DFD1F0FCFBC00731F36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED6050971F20CA1100876D29 /* AudioToolbox.framework */,
 				ED0E51A11F12423000628A22 /* HealthKit.framework */,
 				ED0E519E1F12419A00628A22 /* HealthKit.framework */,
 			);
@@ -217,6 +223,7 @@
 				ED2DE1B31F08FCA6008DF7C7 /* WorkoutsManager.swift */,
 				EDAE37A61F07A9CF001597A1 /* RingView.swift */,
 				EDC246221F079D20008C5AE2 /* Main.storyboard */,
+				ED6050991F20CF6200876D29 /* MusicPlayerViewController.swift */,
 				EDC246251F079D20008C5AE2 /* Assets.xcassets */,
 				EDC246271F079D20008C5AE2 /* LaunchScreen.storyboard */,
 				EDC2462A1F079D20008C5AE2 /* Info.plist */,
@@ -378,6 +385,9 @@
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
 						};
 					};
 					EDC2462E1F079D20008C5AE2 = {
@@ -479,6 +489,7 @@
 				ED2DE1B61F0957C4008DF7C7 /* ExerciseListsController.swift in Sources */,
 				EDC2461F1F079D20008C5AE2 /* AppDelegate.swift in Sources */,
 				ED2DE1B41F08FCA6008DF7C7 /* WorkoutsManager.swift in Sources */,
+				ED60509A1F20CF6200876D29 /* MusicPlayerViewController.swift in Sources */,
 				ED2DE1B21F08FBD5008DF7C7 /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
