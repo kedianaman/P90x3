@@ -262,17 +262,21 @@
         <scene sceneID="ZZg-fL-luy">
             <objects>
                 <viewController id="Esp-2G-hIG" customClass="MusicPlayerViewController" customModule="P90x3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dPq-Ys-qc2"/>
+                        <viewControllerLayoutGuide type="bottom" id="bUt-bJ-oA0"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="tie-M6-9LE">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-0v-uu9">
-                                <rect key="frame" x="26" y="10" width="248" height="180"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-0v-uu9">
+                                <rect key="frame" x="16" y="10" width="268" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z3T-JA-yu2">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="50"/>
+                                        <rect key="frame" x="10" y="0.0" width="248" height="50"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FH-86-aOY">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FH-86-aOY">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="GpC-Cr-YCx"/>
@@ -280,54 +284,84 @@
                                                     <constraint firstAttribute="width" constant="50" id="wYp-4I-FRc"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16n-eL-pu6">
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="uNv-zD-QM1">
                                                 <rect key="frame" x="60" y="0.0" width="188" height="50"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16n-eL-pu6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="188" height="25"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jV2-Cr-C1B">
+                                                        <rect key="frame" x="0.0" y="25" width="188" height="25"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8VT-53-8mP">
-                                        <rect key="frame" x="0.0" y="50" width="248" height="130"/>
+                                        <rect key="frame" x="10" y="50" width="248" height="90"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W3-gI-LHy">
-                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="130"/>
-                                                <state key="normal" title="Back"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W3-gI-LHy">
+                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="90"/>
+                                                <state key="normal" image="rewind"/>
                                                 <connections>
-                                                    <action selector="backButtonPressed:" destination="Esp-2G-hIG" eventType="touchUpInside" id="aH9-7H-Osc"/>
+                                                    <action selector="backButtonPressed:" destination="Esp-2G-hIG" eventType="touchUpInside" id="kmt-Gm-IJR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cd-Yk-q9e">
-                                                <rect key="frame" x="82.5" y="0.0" width="83" height="130"/>
-                                                <state key="normal" title="Play"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cd-Yk-q9e">
+                                                <rect key="frame" x="82.5" y="0.0" width="83" height="90"/>
+                                                <state key="normal" image="Play Music"/>
                                                 <connections>
                                                     <action selector="pausePlayButtonPressed:" destination="Esp-2G-hIG" eventType="touchUpInside" id="NJi-FR-Hmy"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tj-Ww-rzx">
-                                                <rect key="frame" x="165.5" y="0.0" width="82.5" height="130"/>
-                                                <state key="normal" title="Next"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tj-Ww-rzx">
+                                                <rect key="frame" x="165.5" y="0.0" width="82.5" height="90"/>
+                                                <state key="normal" image="forward"/>
                                                 <connections>
-                                                    <action selector="nextButtonPressed:" destination="Esp-2G-hIG" eventType="touchUpInside" id="6Kp-ga-5Vf"/>
+                                                    <action selector="nextButtonPressed:" destination="Esp-2G-hIG" eventType="touchUpInside" id="cpb-di-jbO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="55N-uN-w9f">
+                                        <rect key="frame" x="7" y="140" width="254" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="rDO-rt-GDK"/>
+                                            <constraint firstAttribute="width" constant="250" id="sWZ-sP-Wdj"/>
+                                        </constraints>
+                                        <color key="minimumTrackTintColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="volumeSliderValueChanged:" destination="Esp-2G-hIG" eventType="valueChanged" id="gxr-Vh-gdq"/>
+                                        </connections>
+                                    </slider>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="0FH-86-aOY" firstAttribute="leading" secondItem="r8c-0v-uu9" secondAttribute="leading" constant="10" id="MxY-aX-Eu0"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="8VT-53-8mP" secondAttribute="trailing" constant="10" id="n6W-s0-whm"/>
+                                    <constraint firstItem="8VT-53-8mP" firstAttribute="leading" secondItem="r8c-0v-uu9" secondAttribute="leadingMargin" constant="10" id="qIB-Oc-Pqk"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.14899864792823792" green="0.14903163909912109" blue="0.14899659156799316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="r8c-0v-uu9" firstAttribute="leading" secondItem="tie-M6-9LE" secondAttribute="leadingMargin" constant="10" id="I93-7e-7Gj"/>
-                            <constraint firstAttribute="topMargin" secondItem="r8c-0v-uu9" secondAttribute="top" constant="-10" id="WMs-yO-hYP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="r8c-0v-uu9" secondAttribute="trailing" constant="10" id="eDo-IE-cdx"/>
+                            <constraint firstItem="r8c-0v-uu9" firstAttribute="top" secondItem="tie-M6-9LE" secondAttribute="top" constant="10" id="5Ok-qR-Nnz"/>
+                            <constraint firstItem="r8c-0v-uu9" firstAttribute="leading" secondItem="tie-M6-9LE" secondAttribute="leadingMargin" id="guq-jZ-a0D"/>
                             <constraint firstAttribute="bottomMargin" secondItem="r8c-0v-uu9" secondAttribute="bottom" constant="10" id="tJZ-QE-nGZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r8c-0v-uu9" secondAttribute="trailing" id="uw2-HT-ITk"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="artistNameLabel" destination="jV2-Cr-C1B" id="dXD-p6-8sh"/>
+                        <outlet property="pausePlayButton" destination="0Cd-Yk-q9e" id="24V-AP-9C3"/>
                         <outlet property="songArtworkImage" destination="0FH-86-aOY" id="b3A-6d-iYb"/>
                         <outlet property="songTitleLabel" destination="16n-eL-pu6" id="Y6c-WZ-9Dh"/>
+                        <outlet property="volumeSlider" destination="55N-uN-w9f" id="X5J-k5-ARW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BrX-iY-ICV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,7 +373,10 @@
         <image name="Back" width="28" height="27"/>
         <image name="Next" width="28" height="28"/>
         <image name="Play" width="48" height="48"/>
+        <image name="Play Music" width="27" height="33"/>
         <image name="Workout" width="44" height="60"/>
+        <image name="forward" width="32" height="20"/>
         <image name="p90x3-Title" width="502" height="184"/>
+        <image name="rewind" width="32" height="20"/>
     </resources>
 </document>

@@ -9,7 +9,20 @@ import UIKit
 import MediaPlayer
 
 class MusicPlayerViewController: UIViewController {
+    
+    //MARK: IB Outlets
 
+    @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var songArtworkImage: UIImageView!
+    @IBOutlet weak var pausePlayButton: UIButton!
+    @IBOutlet weak var volumeSlider: UISlider!
+    
+    //MARK: Properties
+    
+    let myMusicPlayer = MPMusicPlayerController()
+    let myMusicQuery = MPMediaQuery.songs()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateMusicInterface()
@@ -17,47 +30,75 @@ class MusicPlayerViewController: UIViewController {
         myMusicPlayer.beginGeneratingPlaybackNotifications()
         
         NotificationCenter.default.addObserver(self, selector: #selector(nowPlayingItemChanged), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(volumeChange), name: NSNotification.Name.MPMusicPlayerControllerVolumeDidChange, object: nil)
     }
     
     @objc func nowPlayingItemChanged(_notification: Notification) {
         updateMusicInterface()
     }
     
-    @IBOutlet weak var songTitleLabel: UILabel!
-    @IBOutlet weak var songArtworkImage: UIImageView!
-    let myMusicPlayer = MPMusicPlayerController()
-    let myMusicQuery = MPMediaQuery.songs()
+    @objc func volumeChange(_notification: Notification) {
+        print("volumeChanged")
+    }
     
-    @IBAction func backButtonPressed(_ sender: Any) {
+    //MARK: IB Actions
+
+   
+    @IBAction func backButtonPressed(_ sender: UIButton) {
         myMusicPlayer.skipToPreviousItem()
+        sender.bubbleAnimate()
     }
     
     @IBAction func pausePlayButtonPressed(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Play" {
+        if sender.imageView?.image == #imageLiteral(resourceName: "Play Music") { // Play Image
             myMusicPlayer.play()
-            sender.setTitle("Pause", for: .normal)
-        } else if sender.titleLabel?.text == "Pause" {
+            sender.bubbleAnimate()
+        } else if sender.imageView?.image == #imageLiteral(resourceName: "Pause Music") { // Paused Image
             myMusicPlayer.pause()
-            sender.setTitle("Play", for: .normal)
+            sender.bubbleAnimate()
+            
         }
     }
     
-    @IBAction func nextButtonPressed(_ sender: Any) {
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
         myMusicPlayer.skipToNextItem()
+        sender.bubbleAnimate()
     }
     
+    @IBAction func volumeSliderValueChanged(_ sender: Any) {
+    }
+    //MARK: Helper Function
+
     func updateMusicInterface() {
         if let nowPlayingSong = myMusicPlayer.nowPlayingItem {
-            let songTitle = nowPlayingSong.title
-            let albumArtwork = nowPlayingSong.artwork?.image(at: CGSize(width: 50, height: 50))
-            songTitleLabel.text = songTitle
-            songArtworkImage.image = albumArtwork
+            songTitleLabel.text = nowPlayingSong.title
+            songArtworkImage.image = nowPlayingSong.artwork?.image(at: CGSize(width: 50, height: 50))
+            artistNameLabel.text = nowPlayingSong.artist
+            if myMusicPlayer.playbackState == .playing {
+                pausePlayButton.setImage(#imageLiteral(resourceName: "Pause Music"), for: .normal)
+            }
             
         } else {
             print("no playing song")
+            songTitleLabel.text = "iPhone"
+            artistNameLabel.text = "Music"
         }
     }
-    
-    
+}
 
+extension UIButton {
+    func bubbleAnimate() {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }) { (_) in
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                if self.imageView?.image == #imageLiteral(resourceName: "Play Music") {
+                    self.setImage(#imageLiteral(resourceName: "Pause Music"), for: .normal)
+                } else if self.imageView?.image == #imageLiteral(resourceName: "Pause Music") {
+                    self.setImage(#imageLiteral(resourceName: "Play Music"), for: .normal)
+                }
+                self.transform = CGAffineTransform.identity
+            }, completion: nil)
+        }
+    }
 }
