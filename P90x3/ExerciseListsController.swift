@@ -69,6 +69,7 @@ class ExerciseListsController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCellIdentifier", for: indexPath)
         cell.textLabel?.text = currentWorkout.excercises[indexPath.row]
+        cell.separatorInset = UIEdgeInsets.zero
         return cell
     }
     

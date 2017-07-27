@@ -7,6 +7,7 @@
 
 import UIKit
 import MediaPlayer
+import AVFoundation
 
 class MusicPlayerViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class MusicPlayerViewController: UIViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songArtworkImage: UIImageView!
     @IBOutlet weak var pausePlayButton: UIButton!
-    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var volumeView: MPVolumeView!
     
     //MARK: Properties
     
@@ -27,8 +28,10 @@ class MusicPlayerViewController: UIViewController {
         super.viewDidLoad()
         updateMusicInterface()
         self.view.layer.cornerRadius = 10.0
+        songArtworkImage.layer.masksToBounds = true
+        songArtworkImage.layer.cornerRadius = 5.0
+ 
         myMusicPlayer.beginGeneratingPlaybackNotifications()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(nowPlayingItemChanged), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(volumeChange), name: NSNotification.Name.MPMusicPlayerControllerVolumeDidChange, object: nil)
     }

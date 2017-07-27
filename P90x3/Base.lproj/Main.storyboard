@@ -98,7 +98,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K4W-bv-DXY">
                                 <rect key="frame" x="0.0" y="184" width="375" height="483"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExcerciseCellIdentifier" textLabel="Jj8-7c-6QS" style="IBUITableViewCellStyleDefault" id="o14-nH-hj5">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -225,13 +225,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d24-ts-RQ8">
-                                <rect key="frame" x="16" y="124" width="68.5" height="24"/>
+                                <rect key="frame" x="16" y="144" width="68.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipf-ww-Ssp">
-                                <rect key="frame" x="37.5" y="156" width="300" height="200"/>
+                                <rect key="frame" x="37.5" y="176" width="300" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ipf-ww-Ssp" secondAttribute="height" multiplier="3:2" id="Liz-Pn-sXk"/>
                                 </constraints>
@@ -270,7 +270,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-0v-uu9">
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-0v-uu9">
                                 <rect key="frame" x="16" y="10" width="268" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z3T-JA-yu2">
@@ -329,17 +329,14 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="55N-uN-w9f">
-                                        <rect key="frame" x="7" y="140" width="254" height="41"/>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmA-FY-a4k" customClass="MPVolumeView">
+                                        <rect key="frame" x="14" y="140" width="240" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="rDO-rt-GDK"/>
-                                            <constraint firstAttribute="width" constant="250" id="sWZ-sP-Wdj"/>
+                                            <constraint firstAttribute="width" constant="240" id="8ET-5p-6Rk"/>
+                                            <constraint firstAttribute="height" constant="40" id="Xx7-Nv-8zu"/>
                                         </constraints>
-                                        <color key="minimumTrackTintColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="volumeSliderValueChanged:" destination="Esp-2G-hIG" eventType="valueChanged" id="gxr-Vh-gdq"/>
-                                        </connections>
-                                    </slider>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="0FH-86-aOY" firstAttribute="leading" secondItem="r8c-0v-uu9" secondAttribute="leading" constant="10" id="MxY-aX-Eu0"/>
@@ -361,7 +358,7 @@
                         <outlet property="pausePlayButton" destination="0Cd-Yk-q9e" id="24V-AP-9C3"/>
                         <outlet property="songArtworkImage" destination="0FH-86-aOY" id="b3A-6d-iYb"/>
                         <outlet property="songTitleLabel" destination="16n-eL-pu6" id="Y6c-WZ-9Dh"/>
-                        <outlet property="volumeSlider" destination="55N-uN-w9f" id="X5J-k5-ARW"/>
+                        <outlet property="volumeView" destination="gmA-FY-a4k" id="mrS-oB-qCV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BrX-iY-ICV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -373,7 +370,7 @@
         <image name="Back" width="28" height="27"/>
         <image name="Next" width="28" height="28"/>
         <image name="Play" width="48" height="48"/>
-        <image name="Play Music" width="27" height="33"/>
+        <image name="Play Music" width="32" height="36"/>
         <image name="Workout" width="44" height="60"/>
         <image name="forward" width="32" height="20"/>
         <image name="p90x3-Title" width="502" height="184"/>
