@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13156.6" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13034"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13040"/>
     </dependencies>
     <scenes>
         <!--MainMenuInterfaceControllerIdentifier-->
@@ -44,9 +44,9 @@
                                 <action selector="workoutEnded" destination="mgO-Fd-CBq" id="WDQ-50-Tje"/>
                             </connections>
                         </button>
-                        <group width="1" height="0.75" alignment="left" verticalAlignment="center" layout="vertical" spacing="10" id="M2w-ki-m4M">
+                        <group width="1" height="0.69999999999999996" alignment="center" layout="vertical" spacing="0.0" id="M2w-ki-m4M">
                             <items>
-                                <group width="1" alignment="left" spacing="5" id="K4B-2C-9cB">
+                                <group width="1" height="0.33333333333333331" alignment="left" spacing="10" id="K4B-2C-9cB">
                                     <items>
                                         <imageView width="30" height="30" alignment="left" image="Time Icon" contentMode="scaleAspectFit" id="1QO-NL-OfD"/>
                                         <label alignment="left" verticalAlignment="center" text="0:32:41" textAlignment="left" id="dIS-Om-mKh">
@@ -55,7 +55,7 @@
                                         </label>
                                     </items>
                                 </group>
-                                <group width="1" alignment="left" spacing="5" id="ztw-Tc-OhR">
+                                <group width="1" height="0.33333333333333331" alignment="left" spacing="10" id="ztw-Tc-OhR">
                                     <items>
                                         <imageView width="30" height="30" alignment="left" image="Colories Icon" contentMode="scaleAspectFit" id="adP-WS-c30"/>
                                         <label width="85" alignment="left" verticalAlignment="center" text="242 CAL" textAlignment="left" id="L81-oM-Snr">
@@ -63,7 +63,7 @@
                                         </label>
                                     </items>
                                 </group>
-                                <group width="1" alignment="left" spacing="5" id="aWr-H3-5tV">
+                                <group width="1" height="0.33333333333333331" alignment="left" spacing="10" id="aWr-H3-5tV">
                                     <items>
                                         <imageView width="27" height="27" alignment="left" image="Heart Icon" contentMode="scaleAspectFit" id="xkm-XE-ffV"/>
                                         <label alignment="left" verticalAlignment="center" text="101 BPM" textAlignment="left" id="gSc-Vg-eeA">

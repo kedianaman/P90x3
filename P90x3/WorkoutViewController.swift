@@ -9,7 +9,7 @@ import UIKit
 import HealthKit
 import WatchConnectivity
 
-class WorkoutViewController: UIViewController, WCSessionDelegate {
+class WorkoutViewController: UIViewController, WCSessionDelegate, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - IB Outlets
   
@@ -99,6 +99,19 @@ class WorkoutViewController: UIViewController, WCSessionDelegate {
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
+    }
+    
+    // MARK: - Table View Methods
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workout!.excercises.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCellIdentifier", for: indexPath)
+        cell.textLabel?.text = workout!.excercises[indexPath.row]
+        cell.separatorInset = UIEdgeInsets.zero
+        return cell
     }
     
 

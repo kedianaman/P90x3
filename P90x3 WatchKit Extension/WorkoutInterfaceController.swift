@@ -133,8 +133,8 @@ class WorkoutInterfaceController: WKInterfaceController, HKWorkoutSessionDelegat
     // MARK: - UI
     
     private func updateLabels() {
-        caloriesLabel.setText("\(healthStoreManager.totalEnergyBurned) CAL")
-        heartRateLabel.setText("\(healthStoreManager.currentHeartRate) BPM")
+        caloriesLabel.setText("\(Int(healthStoreManager.totalEnergyBurned)) CAL")
+        heartRateLabel.setText("\(Int(healthStoreManager.currentHeartRate)) BPM")
         
         let events = healthStoreManager.workoutEvents
         let duration = computeDurationOfWorkout(withEvents: events, startDate: startDate, endDate: endDate)

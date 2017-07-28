@@ -101,7 +101,8 @@ func format(totalEnergyBurned: Double) -> String {
 //}
 
 func format(totalEnergyBurned: HKQuantity?) -> String {
-    return String("\(totalEnergyBurned!.doubleValue(for: .kilocalorie())) CAL")
+    let calories = totalEnergyBurned!.doubleValue(for: .kilocalorie())
+    return String("\(Int(calories)) CAL")
 }
 
 
