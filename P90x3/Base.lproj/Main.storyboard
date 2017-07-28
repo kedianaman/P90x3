@@ -364,14 +364,14 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmA-FY-a4k" customClass="MPVolumeView">
-                                        <rect key="frame" x="14" y="140" width="240" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XxC-Kt-dqe" customClass="MPVolumeView">
+                                        <rect key="frame" x="12" y="140" width="244" height="41"/>
+                                        <color key="tintColor" red="0.99293786289999997" green="0.54674017429999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="8ET-5p-6Rk"/>
-                                            <constraint firstAttribute="height" constant="40" id="Xx7-Nv-8zu"/>
+                                            <constraint firstAttribute="height" constant="40" id="DyR-q1-txr"/>
+                                            <constraint firstAttribute="width" constant="240" id="eSz-my-1OA"/>
                                         </constraints>
-                                    </view>
+                                    </slider>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="0FH-86-aOY" firstAttribute="leading" secondItem="r8c-0v-uu9" secondAttribute="leading" constant="10" id="MxY-aX-Eu0"/>
@@ -393,7 +393,7 @@
                         <outlet property="pausePlayButton" destination="0Cd-Yk-q9e" id="24V-AP-9C3"/>
                         <outlet property="songArtworkImage" destination="0FH-86-aOY" id="b3A-6d-iYb"/>
                         <outlet property="songTitleLabel" destination="16n-eL-pu6" id="Y6c-WZ-9Dh"/>
-                        <outlet property="volumeView" destination="gmA-FY-a4k" id="mrS-oB-qCV"/>
+                        <outlet property="volumeView" destination="XxC-Kt-dqe" id="f3x-vB-vHW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BrX-iY-ICV" userLabel="First Responder" sceneMemberID="firstResponder"/>

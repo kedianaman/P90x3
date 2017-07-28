@@ -30,18 +30,14 @@ class MusicPlayerViewController: UIViewController {
         self.view.layer.cornerRadius = 10.0
         songArtworkImage.layer.masksToBounds = true
         songArtworkImage.layer.cornerRadius = 5.0
+        volumeView.showsRouteButton = false
  
         myMusicPlayer.beginGeneratingPlaybackNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(nowPlayingItemChanged), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(volumeChange), name: NSNotification.Name.MPMusicPlayerControllerVolumeDidChange, object: nil)
     }
     
     @objc func nowPlayingItemChanged(_notification: Notification) {
         updateMusicInterface()
-    }
-    
-    @objc func volumeChange(_notification: Notification) {
-        print("volumeChanged")
     }
     
     //MARK: IB Actions
